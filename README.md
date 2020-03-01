@@ -6,7 +6,6 @@ How to grade:
 - Put your grader<>.txt in this folder, name it **grader.txt**
 - Run **sh grade.sh** in the script folder
 - Results (score, log, output) of each student will be stored in **corpus/<studentid>**
-This script uses **Python 3**
   
 The script grade.sh consists of:
 - Filter the corpus of students each TA needs to grade

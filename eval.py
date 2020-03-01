@@ -78,7 +78,7 @@ def get_fn(k, mod):
     if k == 4:
         return mod.nqueens_restart
 
-def evaluate(stu_path, mod):
+def evaluate(stu_path, mod, num_tests=4):
     report_path = '{}/scores.txt'.format(stu_path)
     log_path = '{}/log.txt'.format(stu_path)
     output_path = '{}/output'.format(stu_path)
@@ -88,7 +88,7 @@ def evaluate(stu_path, mod):
     score = 0
     signal.signal(signal.SIGALRM, handler)
     # Not Restart
-    for k in range(4):
+    for k in range(num_tests):
         func_name = func_names[k]
         # print(func_name)
         cases = testset[str(k)]
@@ -117,28 +117,37 @@ def evaluate(stu_path, mod):
                     output = o.getvalue()
                 # compare results
                 signal.alarm(0)
-                # write report
-                result = compare(k, answer, output)
-                if result:
+
+                if k == 4:
+                    # default setting
+                    score += x['score']
+                    mess3 = 'passed +{}'.format(x['score'])
+                    freport.write("{}_solution: {}\n".format(test_name, mess3))
                     score += x['score']
                     message = 'passed +{}'.format(x['score'])
                 else:
-                    message = 'wrong output'
-                # nqueens
-                if k == 3:
-                    try:
-                        out_succ = convert_succ_to_lst(succ_output)
-                        ans_succ = convert_succ_to_lst(succ_answer)
-                        if out_succ == ans_succ:
-                            mess3 = 'passed +{}'.format(x['score'])
-                            score += x['score']
-                        else:
-                            mess3 = 'wrong output'
-                        # for printing
-                        output = "{}=> {}".format(succ_output, output)
-                    except:
-                        mess3 = 'comparison exception'
-                    freport.write("{}_finalstate: {}\n".format(test_name, mess3))
+                    # write report
+                    result = compare(k, answer, output)
+                    if result:
+                        score += x['score']
+                        message = 'passed +{}'.format(x['score'])
+                    else:
+                        message = 'wrong output'
+                    # nqueens
+                    if k == 3:
+                        try:
+                            out_succ = convert_succ_to_lst(succ_output)
+                            ans_succ = convert_succ_to_lst(succ_answer)
+                            if out_succ == ans_succ:
+                                mess3 = 'passed +{}'.format(x['score'])
+                                score += x['score']
+                            else:
+                                mess3 = 'wrong output'
+                            # for printing
+                            output = "{}=> {}".format(succ_output, output)
+                        except:
+                            mess3 = 'comparison exception'
+                        freport.write("{}_finalstate: {}\n".format(test_name, mess3))
             except TimeOutException as exc:
                 message = "Time Out"
             except:
@@ -151,5 +160,5 @@ def evaluate(stu_path, mod):
             # write_output(answer, fpath_answer)
 
     print('===> score: {}'.format(score))
-    freport.write('Total: {}'.format(score))
+    freport.write('Total: {}/100'.format(score))
     freport.close()

@@ -16,3 +16,4 @@ Notice:
 - We have to use Python 3
 - Expected outputs with inputs are stored in folder test
 - We have to manually grade nqueens_restart (20 points)
+- Provable minor issues from students (order of printing, lower/upper cases, tab/space) were handled.

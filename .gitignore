@@ -27,6 +27,12 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+corpus/
+submissions/
+corpus3/
+log_grader.txt
+grader.txt
+
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.

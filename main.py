@@ -26,4 +26,4 @@ for d in sorted(os.listdir(corpus_path)):
 			except:
 				print('Should comment nqueens live code!!')
 		if mod:
-			evaluate(stu_path, mod, num_tests=4)
+			evaluate(stu_path, mod, num_tests=5)

@@ -103,7 +103,7 @@ def evaluate(stu_path, mod, num_tests=4):
             x = cases[i]
             test_name = "{}_{}".format(func_name, i)
             try:
-                signal.alarm(2)
+                signal.alarm(5)
                 if k < 3:
                     answer = fn(x['state'], boulderX=x['boulder'][0], boulderY=x['boulder'][1])
                     output = stu_fn(x['state'], boulderX=x['boulder'][0], boulderY=x['boulder'][1])

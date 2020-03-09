@@ -5,13 +5,22 @@
 """
 import os, shutil, glob
 
-grader_path = "grader.txt"
+grader_path = "../txt/grader13.txt"
 submission_path = 'submissions'
 log_path = 'log_grader.txt'
 corpus_path = 'corpus'
+corpus3_path = 'corpus3'
 fname = 'nqueens'
-if not os.path.exists(corpus_path):
-    os.makedirs(corpus_path)
+
+def mkdir(corpus_path, rm=True):
+    if not os.path.exists(corpus_path):
+        os.makedirs(corpus_path)
+    else:
+        shutil.rmtree(corpus_path)
+
+mkdir(corpus_path)
+mkdir(corpus3_path)
+
 # list of students
 f = open(grader_path, "r")
 students = f.readlines()

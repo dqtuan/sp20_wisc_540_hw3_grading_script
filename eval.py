@@ -98,8 +98,8 @@ def evaluate(stu_path, mod, num_tests=4):
         except:
             freport.write("{}: No function found\n".format(func_name))
             continue
-        output = ""
         for i in range(len(cases)):
+            output = ""
             x = cases[i]
             test_name = "{}_{}".format(func_name, i)
             try:

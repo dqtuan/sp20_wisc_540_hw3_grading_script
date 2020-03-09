@@ -21,7 +21,7 @@ from soln import nqueens_restart as soln_nqueens_restart
 # target functions
 soln_fns = [soln_succ, soln_f, soln_choose_next, soln_nqueens, soln_nqueens_restart]
 func_names = ['succ', 'f', 'choose_next', 'nqueens', 'nqueens_restart']
-
+MAX_TIME = 5
 #####------------Helpers-----------------###
 
 def compare(k, answer, output):
@@ -111,10 +111,13 @@ def evaluate(stu_path, mod, num_tests=4):
                     succ_answer, answer = get_nqueens(fn, x)
                     succ_output, output = get_nqueens(stu_fn, x)
                 elif k == 4:
-                    o = io.StringIO()
-                    with redirect_stdout(o):
-                        stu_fn(n=x['n'], k=x['k'], boulderX=x['boulder'][0], boulderY=x['boulder'][1])
-                    output = o.getvalue()
+                    output = ''
+                    for m in range(3):
+                        o = io.StringIO()
+                        with redirect_stdout(o):
+                            stu_fn(n=x['n'], k=x['k'], boulderX=x['boulder'][0], boulderY=x['boulder'][1])
+                        out = 'Time {} \n {} \n --------- \n'.format(m, o.getvalue())
+                        output = output + out
                 # compare results
                 signal.alarm(0)
 
@@ -162,3 +165,48 @@ def evaluate(stu_path, mod, num_tests=4):
     print('===> score: {}'.format(score))
     freport.write('Total: {}/100'.format(score))
     freport.close()
+
+
+def evaluate_nqueen_restart(stu_path, mod):
+    log_path = '{}/log.txt'.format(stu_path)
+    output_path = '{}/output'.format(stu_path)
+    mkdir(output_path, rm=False)
+    logf = open(log_path, 'a')
+    signal.signal(signal.SIGALRM, handler)
+    # Not Restart
+    k = 4
+    func_name = func_names[k]
+    # print(func_name)
+    cases = testset[str(k)]
+    fn = soln_fns[k]
+    try:
+        stu_fn = get_fn(k, mod)
+    except:
+        mess = "{}: No function found\n".format(func_name)
+        logf.write(mess)
+        print(mess)
+        return -1
+    output = ""
+    for i in range(len(cases)):
+        x = cases[i]
+        test_name = "{}_{}".format(func_name, i)
+        try:
+            signal.alarm(MAX_TIME)
+            output = ''
+            for m in range(3):
+                o = io.StringIO()
+                with redirect_stdout(o):
+                    stu_fn(n=x['n'], k=x['k'], boulderX=x['boulder'][0], boulderY=x['boulder'][1])
+                out = 'Run {}:\n{}\n---------\n'.format(m, o.getvalue())
+                output = output + out
+            # compare results
+            signal.alarm(0)
+        except TimeOutException as exc:
+            message = "Time Out"
+        except:
+            message = "Function Exception"
+        fname = '{}.txt'.format(test_name)
+        fpath_output = os.path.join(output_path, fname)
+        write_output(output, fpath_output)
+
+    print('Done')

@@ -6,7 +6,7 @@
 
 import os, sys
 import importlib
-from eval import evaluate
+from eval import evaluate, evaluate_nqueen_restart
 
 corpus_path = 'corpus'
 corpus3_path = 'corpus3'
@@ -27,3 +27,4 @@ for d in sorted(os.listdir(corpus_path)):
 				print('Should comment nqueens live code!!')
 		if mod:
 			evaluate(stu_path, mod, num_tests=5)
+			evaluate_nqueen_restart(stu_path, mod)

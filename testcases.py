@@ -38,16 +38,16 @@ testset['1'] = [
 # choose_next(curr, boulderX, boulderY):
 # - 10: better state
 # - 10: plateau
-# - 10: None
+# - 5: None
 # - a state of None
 testset['2'] = [
     {'state': [1, 1, 2], 'boulder': [0, 0], 'output': [1, 0, 2], 'score': 2},#better state
     {'state': [2, 0, 4, 4, 1], 'boulder': [1, 2], 'output':[2, 0, 2, 4, 1], 'score': 4},
     {'state': [1, 3, 0, 5, 0, 1, 4], 'boulder': [3, 2], 'score': 4},
 
-    {'state': [0, 0, 2], 'boulder': [1, 1], 'output': 'None', 'score': 2},# None
-    {'state': [2, 0, 4, 4, 1], 'boulder': [1, 3], 'output': 'None', 'score': 4},
-    {'state': [1, 3, 0, 6, 2, 5, 1], 'boulder': [3, 1], 'output': 'None', 'score': 4},
+    {'state': [0, 0, 2], 'boulder': [1, 1], 'output': 'None', 'score': 1},# None
+    {'state': [2, 0, 4, 4, 1], 'boulder': [1, 3], 'output': 'None', 'score': 2},
+    {'state': [1, 3, 0, 6, 2, 5, 1], 'boulder': [3, 1], 'output': 'None', 'score': 2},
 
     {'state': [1, 2, 2], 'boulder': [1, 0], 'output': [0, 2, 2], 'score': 2}, # plateau
     {'state': [2, 0, 4, 4, 1], 'boulder': [1, 4], 'output':[2, 0, 2, 4, 1], 'score': 4},
@@ -58,11 +58,11 @@ testset['2'] = [
 # - 10: terminal state
 # - 10: print correct seq (dont care f)
 testset['3'] = [
-    {'state': [0,1,2,3,5,5,6,7], 'boulder': [4, 4], 'score': 2},
-    {'state': [0,2,2,3,4,5,6,7], 'boulder': [1, 1], 'score': 2},
-    {'state': [1, 1, 2], 'boulder': [0, 0], 'score': 2},
-    {'state': [2, 0, 4, 4, 1], 'boulder': [1, 2], 'score': 2},
-    {'state': [1, 3, 0, 5, 0, 1, 4], 'boulder': [3, 2], 'score': 2},
+    {'state': [0,1,2,3,5,5,6,7], 'boulder': [4, 4], 'score': 3},
+    {'state': [0,2,2,3,4,5,6,7], 'boulder': [1, 1], 'score': 3},
+    {'state': [1, 1, 2], 'boulder': [0, 0], 'score': 3},
+    {'state': [2, 0, 4, 4, 1], 'boulder': [1, 2], 'score': 3},
+    {'state': [1, 3, 0, 5, 0, 1, 4], 'boulder': [3, 2], 'score': 3},
 ]
 
 # nqueens_restart(n, k, boulderX, boulderY): 5, 5, 5, 5

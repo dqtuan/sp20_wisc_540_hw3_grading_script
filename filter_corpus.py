@@ -5,7 +5,7 @@
 """
 import os, shutil, glob
 
-grader_path = "../txt/grader13.txt"
+grader_path = "grader.txt"
 submission_path = 'submissions'
 log_path = 'log_grader.txt'
 corpus_path = 'corpus'

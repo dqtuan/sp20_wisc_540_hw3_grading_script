@@ -143,14 +143,14 @@ def evaluate(stu_path, mod, num_tests=4):
                             ans_succ = convert_succ_to_lst(succ_answer)
                             if out_succ == ans_succ:
                                 mess3 = 'passed +{}'.format(x['score'])
-                                score += x['score']
+                                score += x['score-state']
                             else:
                                 mess3 = 'wrong output'
                             # for printing
                             output = "{}=> {}".format(succ_output, output)
                         except:
                             mess3 = 'comparison exception'
-                        freport.write("{}_finalstate: {}\n".format(test_name, mess3))
+                        freport.write("{}_terminal-state: {}\n".format(test_name, mess3))
             except TimeOutException as exc:
                 message = "Time Out"
             except:

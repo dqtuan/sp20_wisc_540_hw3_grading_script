@@ -58,11 +58,11 @@ testset['2'] = [
 # - 10: terminal state
 # - 10: print correct seq (dont care f)
 testset['3'] = [
-    {'state': [0,1,2,3,5,5,6,7], 'boulder': [4, 4], 'score': 3},
-    {'state': [0,2,2,3,4,5,6,7], 'boulder': [1, 1], 'score': 3},
-    {'state': [1, 1, 2], 'boulder': [0, 0], 'score': 3},
-    {'state': [2, 0, 4, 4, 1], 'boulder': [1, 2], 'score': 3},
-    {'state': [1, 3, 0, 5, 0, 1, 4], 'boulder': [3, 2], 'score': 3},
+    {'state': [0,1,2,3,5,5,6,7], 'boulder': [4, 4], 'score': 3, 'score-state': 2},
+    {'state': [0,2,2,3,4,5,6,7], 'boulder': [1, 1], 'score': 3, 'score-state': 2},
+    {'state': [1, 1, 2], 'boulder': [0, 0], 'score': 3, 'score-state': 2},
+    {'state': [2, 0, 4, 4, 1], 'boulder': [1, 2], 'score': 3, 'score-state': 2},
+    {'state': [1, 3, 0, 5, 0, 1, 4], 'boulder': [3, 2], 'score': 3, 'score-state': 2},
 ]
 
 # nqueens_restart(n, k, boulderX, boulderY): 5, 5, 5, 5

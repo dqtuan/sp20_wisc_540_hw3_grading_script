@@ -142,7 +142,7 @@ def evaluate(stu_path, mod, num_tests=4):
                             out_succ = convert_succ_to_lst(succ_output)
                             ans_succ = convert_succ_to_lst(succ_answer)
                             if out_succ == ans_succ:
-                                mess3 = 'passed +{}'.format(x['score'])
+                                mess3 = 'passed +{}'.format(x['score-state'])
                                 score += x['score-state']
                             else:
                                 mess3 = 'wrong output'
